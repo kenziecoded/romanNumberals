@@ -1,6 +1,9 @@
 package org.example
 
 var returnString = ""
+var ones = arrayOf('I', 'X', 'C', 'M')
+var fives = arrayOf('V', 'L', 'D')
+var tens = arrayOf('X', 'C', 'M')
 fun main() {
     println("Enter an Integer: ")
     val input: String = readln()
@@ -26,26 +29,45 @@ fun main() {
             returnString = ""
         }
     } else if (places == 2) {
-        when (input[0]) {
-            '1' -> returnString += "X"
-            '2' -> returnString += "XX"
-            '3' -> returnString += "XXX"
-            '4' -> returnString += "XL"
-            '5' -> returnString += "L"
-            '6' -> returnString += "LX"
-            '7' -> returnString += "LXX"
-            '8' -> returnString += "LXXX"
-            '9' -> returnString += "XC"
-        }
-        getSingleNum(input[1])
+        getTens(input[0])
+        getOnes(input[1])
     } else {
-        getSingleNum(input[0])
+        getOnes(input[0])
     }
 
     println(returnString)
 }
 
-fun getSingleNum(int: Char) {
+private fun getHundreds(int: Char) {
+
+    when (int) {
+        '1' -> returnString += "C"
+        '2' -> returnString += "CC"
+        '3' -> returnString += "CCC"
+        '4' -> returnString += "CD"
+        '5' -> returnString += "D"
+        '6' -> returnString += "DC"
+        '7' -> returnString += "DCC"
+        '8' -> returnString += "DCCC"
+        '9' -> returnString += "CM"
+    }
+}
+
+private fun getTens(int: Char) {
+    when (int) {
+        '1' -> returnString += "X"
+        '2' -> returnString += "XX"
+        '3' -> returnString += "XXX"
+        '4' -> returnString += "XL"
+        '5' -> returnString += "L"
+        '6' -> returnString += "LX"
+        '7' -> returnString += "LXX"
+        '8' -> returnString += "LXXX"
+        '9' -> returnString += "XC"
+    }
+}
+
+fun getOnes(int: Char) {
     when (int) {
         '1' -> returnString += "I"
         '2' -> returnString += "II"
