@@ -11,11 +11,20 @@ fun main() {
 /**
  * a more efficient way could be to keep track of which numbers are "special"
  * like 1 I, 5 V, 10 X, 50 L, 100 C, 1000M and have a set of rules based on the given number's relation
- * to these special numbers
+ * to these special numbers, since it is the same pattern for each place's special chars
+ * ones place - I, V, X
+ * tens place - X, L, C
+ * hundreds place - C, D, M
 **/
 
+    //ensure String is now empty
+    returnString = ""
     if (places > 2) {
-        println("C")
+        if (input == "100") {
+            returnString = "C"
+        } else {
+            returnString = ""
+        }
     } else if (places == 2) {
         when (input[0]) {
             '1' -> returnString += "X"
