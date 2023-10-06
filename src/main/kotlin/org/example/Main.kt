@@ -1,9 +1,9 @@
 package org.example
 
 var returnString = ""
-var ones = arrayOf('I', 'X', 'C', 'M')
-var fives = arrayOf('V', 'L', 'D')
-var tens = arrayOf('X', 'C', 'M')
+var one = arrayOf('I', 'X', 'C', 'M')
+var five = arrayOf('V', 'L', 'D')
+var ten = arrayOf('X', 'C', 'M')
 fun main() {
     println("Enter an Integer: ")
     val input: String = readln()
@@ -22,61 +22,46 @@ fun main() {
 
     //ensure String is now empty
     returnString = ""
-    if (places > 2) {
-        if (input == "100") {
-            returnString = "C"
-        } else {
-            returnString = ""
+    if (places > 3) {
+        if (input.toInt() <= 3000){
+            addToReturnString(input[0], Places.THOUSANDTHS)
+            addToReturnString(input[1], Places.HUNDRETHS)
+            addToReturnString(input[2], Places.TENS)
+            addToReturnString(input[3], Places.ONES)
         }
+    } else if (places == 3) {
+        addToReturnString(input[0], Places.HUNDRETHS)
+        addToReturnString(input[1], Places.TENS)
+        addToReturnString(input[2], Places.ONES)
     } else if (places == 2) {
-        getTens(input[0])
-        getOnes(input[1])
+        addToReturnString(input[0], Places.TENS)
+        addToReturnString(input[1], Places.ONES)
     } else {
-        getOnes(input[0])
+        addToReturnString(input[0], Places.ONES)
     }
 
     println(returnString)
 }
 
-private fun getHundreds(int: Char) {
-
-    when (int) {
-        '1' -> returnString += "C"
-        '2' -> returnString += "CC"
-        '3' -> returnString += "CCC"
-        '4' -> returnString += "CD"
-        '5' -> returnString += "D"
-        '6' -> returnString += "DC"
-        '7' -> returnString += "DCC"
-        '8' -> returnString += "DCCC"
-        '9' -> returnString += "CM"
+private fun addToReturnString(int: Char, places: Places) {
+    val index: Int = places.int
+    val one: Char = one[index]
+    var fiveChar = ' '
+    var tenChar = ' '
+    if (places != Places.THOUSANDTHS) {
+        fiveChar = five[index]
+        tenChar = ten[index]
     }
-}
 
-private fun getTens(int: Char) {
     when (int) {
-        '1' -> returnString += "X"
-        '2' -> returnString += "XX"
-        '3' -> returnString += "XXX"
-        '4' -> returnString += "XL"
-        '5' -> returnString += "L"
-        '6' -> returnString += "LX"
-        '7' -> returnString += "LXX"
-        '8' -> returnString += "LXXX"
-        '9' -> returnString += "XC"
-    }
-}
-
-fun getOnes(int: Char) {
-    when (int) {
-        '1' -> returnString += "I"
-        '2' -> returnString += "II"
-        '3' -> returnString += "III"
-        '4' -> returnString += "IV"
-        '5' -> returnString += "V"
-        '6' -> returnString += "VI"
-        '7' -> returnString += "VII"
-        '8' -> returnString += "VIII"
-        '9' -> returnString += "IX"
+        '1' -> returnString += one
+        '2' -> returnString = returnString + one + one
+        '3' -> returnString = returnString + one + one + one
+        '4' -> returnString = returnString + one + fiveChar
+        '5' -> returnString += fiveChar
+        '6' -> returnString = returnString + fiveChar + one
+        '7' -> returnString = returnString + fiveChar + one + one
+        '8' -> returnString = returnString + fiveChar + one + one + one
+        '9' -> returnString = returnString + one + tenChar
     }
 }

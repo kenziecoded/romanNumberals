@@ -36,8 +36,8 @@ class MainTest {
     }
 
     @Test
-    fun `given 56 respond with LVI`() {
-        verifyOutput("56", "LVI")
+    fun `given 1899 respond with MDCCCXCIX`() {
+        verifyOutput("1899", "MDCCCXCIX")
     }
 
     @Test
@@ -61,8 +61,13 @@ class MainTest {
     }
 
     @Test
-    fun `given 10000 respond with empty string`() {
-        verifyOutput("10000", "")
+    fun `given 3000 respond with MMM`() {
+        verifyOutput("3000", "MMM")
+    }
+
+    @Test
+    fun `given 2450 respond with MMCDL`() {
+        verifyOutput("2450", "MMCDL")
     }
 
     private fun verifyOutput(input: String, romanNum: String) {
