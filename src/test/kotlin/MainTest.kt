@@ -23,5 +23,7 @@ class MainTest {
         System.setIn(ByteArrayInputStream(input.toByteArray()))
         main()
         assert(testOut.toString().contains(expectedOutput))
+        assert(testOut.toString().contains("II"))
+
     }
 }
