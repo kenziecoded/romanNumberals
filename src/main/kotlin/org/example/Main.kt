@@ -1,7 +1,7 @@
-package org.example;
+package org.example
 
 fun main() {
     println("Enter an Integer: ")
-    val input = readln();
+    val input = readln()
     println("Input is: $input")
 }
